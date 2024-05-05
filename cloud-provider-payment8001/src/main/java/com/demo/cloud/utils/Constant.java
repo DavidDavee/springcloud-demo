@@ -1,4 +1,4 @@
-package org.example.utils;
+package com.demo.cloud.utils;
 
 /**
  * @program: springboot-demo
@@ -7,5 +7,4 @@ package org.example.utils;
  * @create: 2024-04-18 23:03
  **/
 public class Constant {
-    public static final String PARAM_ERROR_MESSAGE = "参数错误";
 }
