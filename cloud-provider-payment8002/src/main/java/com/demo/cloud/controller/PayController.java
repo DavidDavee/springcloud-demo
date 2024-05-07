@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -64,10 +63,6 @@ public class PayController {
     @Operation(summary = "按照ID查流水", description = "查询支付流水方法")
     @GetMapping(value = "/{id}")
     public ResultData<PayDTO> getById(@PathVariable("id") Integer id) {
-
-        //暂停62秒钟线程,故意写bug，测试出feign的默认调用超时时间
-        try { TimeUnit.SECONDS.sleep(62); } catch (InterruptedException e) { e.printStackTrace(); }
-
         Pay pay = payService.getById(id);
         PayDTO payDTO = new PayDTO();
         BeanUtils.copyProperties(pay, payDTO);
