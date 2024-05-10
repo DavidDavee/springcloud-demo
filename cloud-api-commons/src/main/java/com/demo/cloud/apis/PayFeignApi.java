@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface PayFeignApi {
     /**
      * 新增一条支付相关流水记录
+     *
      * @param payDTO
      * @return
      */
@@ -26,6 +27,7 @@ public interface PayFeignApi {
 
     /**
      * 按照主键记录查询支付流水信息
+     *
      * @param id
      * @return
      */
@@ -34,8 +36,34 @@ public interface PayFeignApi {
 
     /**
      * openfeign天然支持负载均衡演示
+     *
      * @return
      */
     @GetMapping(value = "/pay/get/info")
     String mylb();
+
+    /**
+     * Resilience4j CircuitBreaker 的例子
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/circuit/{id}")
+    public String myCircuit(@PathVariable("id") Integer id);
+
+    /**
+     * Resilience4j Bulkhead 的例子
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/bulkhead/{id}")
+    public String myBulkhead(@PathVariable("id") Integer id);
+
+    /**
+     * Resilience4j Ratelimit 的例子
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/ratelimit/{id}")
+    public String myRatelimit(@PathVariable("id") Integer id);
 }
