@@ -41,7 +41,7 @@ public class OrderController {
             System.out.println("调用结束-----: "+ DateUtil.now());
             ResultData.fail(ReturnCodeEnum.RC500.getCode(),e.getMessage());
         }
-        return payFeignApi.getPayInfo(id);
+        return ResultData.success(resultData);
     }
 
     /**
