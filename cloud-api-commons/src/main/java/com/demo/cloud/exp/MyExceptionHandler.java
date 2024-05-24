@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  **/
 
 @Slf4j
-@RestControllerAdvice
+//@RestControllerAdvice
 public class MyExceptionHandler {
 
     @ExceptionHandler(value = RuntimeException.class)
