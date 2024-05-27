@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  **/
 
 @Slf4j
-//@RestControllerAdvice
+@RestControllerAdvice
 public class MyExceptionHandler {
 
     @ExceptionHandler(value = RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResultData<String> myRuntimeException(RuntimeException e) {
         log.error("内部错误:{}", e.getMessage(), e.fillInStackTrace(), e);
-        return ResultData.fail(ReturnCodeEnum.RC500.getCode(), ReturnCodeEnum.RC500.getMessage());
+        return ResultData.fail(ReturnCodeEnum.RC500.getCode(), e.getMessage());
     }
 
     @ExceptionHandler(value = NoFallbackAvailableException.class)
